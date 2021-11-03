@@ -1,0 +1,65 @@
+#include "script_component.hpp"
+params ["_tree"];
+
+_bbr = boundingBoxReal _tree;
+_p1 = _bbr select 0;
+_p2 = _bbr select 1;
+_maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+_maxLength = abs ((_p2 select 1) - (_p1 select 1));
+_maxHeight = abs ((_p2 select 2) - (_p1 select 2));
+private _basePos = (getPosATL _tree) vectorAdd [0, 0, 1];
+private _sources = [];
+
+private _createLight = count (_tree nearObjects ["#lightPoint", 75]) isEqualTo 0;
+private _light = if (_createLight) then {
+    _light = "#lightpoint" createVehicleLocal _basePos;
+    _light setLightColor [0,0,0];
+    _light setLightAmbient [1,0.45,0.3];
+    _light setLightIntensity 300;
+    _light setLightUseFlare false;
+    _light setLightAttenuation [35,1,0,0.005];
+    _sources pushBack _light;
+    _light
+};
+
+private _sound = createSoundSource ["Sound_Fire", _tree, [], 0];
+_sources pushBack _sound;
+
+private _particleSize = _maxHeight max _maxLength max _maxWidth;
+private _fire = "#particleSource" createVehicleLocal _basePos;
+_fire setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,10,32,1],"","Billboard",3,8,[0,0,_maxHeight/3],[0,0,0.5],0,1.27,1,0,[_particleSize/2,_particleSize/2],[[1,1,1,-100],[1,1,1,-100],[0,0,0,0]],[1],0,0,"","","",0,false,0,[[0,0,0,0]]];
+_fire setParticleRandom [
+    2,
+    [_maxWidth/4,_maxWidth/4,_maxHeight/3],
+    [0.05,0.05,0.25],
+    0,
+    0,
+    [0.1,0.1,0.1,0],
+    0,
+    0,
+    0.25,
+    0
+];
+// setParticleFire causes lag
+// _fire setParticleFire [0.25,15,0.1];
+_fire setDropInterval 1.5*0.9 + 1.5*(random 0.2);
+_sources pushBack _fire;
+
+private _smoke = "#particleSource" createVehicleLocal _basePos;
+_smoke setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal_02.p3d",8,0,40,1],"","Billboard",1,25,[0,0,_maxHeight/1.5],[0,0,3],1,0.045,0.04,0.05,[_particleSize,_particleSize*2],[[0.85,0.85,0.85,0.9],[0.35,0.35,0.35,0.75],[0.35,0.35,0.35,0.45],[0.42,0.42,0.42,0.28],[0.42,0.42,0.42,0.16],[0.42,0.42,0.42,0.09],[0.42,0.42,0.42,0.06],[0.5,0.5,0.5,0.02],[0.5,0.5,0.5,0]],[0,0.55,0.35],0.3,0.2,"","","",0,false,0,[[0,0,0,0]]];
+_smoke setParticleRandom [2,[_maxWidth/3,_maxLength/3,0.15],[-0,0,0],0.5,0,[0,0,0,0.25],0,0,0.5,0];
+_smoke setDropInterval 2*0.9 + 2*(random 0.2);
+_sources pushBack _smoke;
+
+[_tree, _sources] call seb_fnc_removeFireLoop;
+
+if (isServer) then {
+    seb_burningObjects pushBackUnique _tree;
+    private _endTime = time + 60 + (random 60);  
+    private _nearbyObjects = (nearestTerrainObjects [_tree, seb_fireTypes, seb_spreadDist]);
+    [
+        {_this call seb_fnc_fireLoop}, 
+        [_tree, _endTime, _nearbyObjects], 
+        random (seb_fireSleep * 2)
+    ] call CBA_fnc_waitAndExecute;
+};
