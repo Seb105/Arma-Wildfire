@@ -8,5 +8,5 @@ private _nearbyObjects = (nearestTerrainObjects [_obj, GVAR(burnTypes), GVAR(spr
     _x call FUNC(canBurn);
 };
 {
-    [{[_this] remoteExec [QGVAR(fire)]}, _x, random 2] call CBA_fnc_waitAndExecute;
+    [{[_this] remoteExec [QFUNC(fire)]}, _x, random 2] call CBA_fnc_waitAndExecute;
 } forEach _nearbyObjects;

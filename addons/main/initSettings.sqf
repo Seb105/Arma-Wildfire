@@ -16,7 +16,7 @@
     "SLIDER",               // type
     [LLSTRING(SpreadSpeedTitle), LLSTRING(SpreadSpeedTooltip)],        // title
     LLSTRING(Wildfire),  // Category
-    [0.25, 30, 0.25, 2],       // Values 
+    [0.25, 10, 0.25, 2],       // Values 
     true,                   // isGlobal?
     {  
         GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))

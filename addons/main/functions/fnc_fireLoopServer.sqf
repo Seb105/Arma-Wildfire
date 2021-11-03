@@ -11,24 +11,16 @@ if (time > _endTime) exitWith {
 
 _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
 if (count _nearbyObjects > 0 && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}) then {
-    private _spreadChance = 1 / count _nearbyObjects;
-    private _rainCoef = (1.1-rain) max 1;
-    private _burn = _nearbyObjects select {
-        private _distanceCoef = linearConversion [
-            0, 
-            GVAR(spreadDistance), 
-            _x distance2D _tree,
-            1,
-            0
-        ];
-        random 100 < _rainCoef * _distanceCoef * 100
-    };
+    private _rainCoef = (1.1-rain) min 1;
+    private _spreadDistWind = (1 + windStr) * GVAR(spreadDistance);
+    private _area = [_tree, _spreadDistWind] call FUNC(getWindArea);
+    private _burn = (_nearbyObjects inAreaArray _area) select {[_tree, _x, _rainCoef, _spreadDistWind] call FUNC(shouldStartFire)};
     {
         [_x] remoteExecCall [QFUNC(fire)];
     } forEach _burn;
 };
 
-private _sleep = random GVAR(spreadSleep); // Avg is actually spreadSleep/2, however 
+private _sleep = random GVAR(spreadSleep); // Avg is actually spreadSleep/2
 
 for "_i" from 0 to _sleep step 1 do {
     [

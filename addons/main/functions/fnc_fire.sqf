@@ -11,12 +11,12 @@ _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
 private _basePos = (getPosATL _tree) vectorAdd [0, 0, 1];
 private _sources = [];
 
-private _createLight = count (_tree nearObjects ["#lightPoint", 75]) isEqualTo 0;
+private _createLight = count (_tree nearObjects ["#lightPoint", 35]) isEqualTo 0;
 private _light = if (_createLight) then {
     _light = "#lightpoint" createVehicleLocal _basePos;
     _light setLightColor [0,0,0];
     _light setLightAmbient [1,0.45,0.3];
-    _light setLightIntensity 600;
+    _light setLightIntensity 300;
     _light setLightUseFlare false;
     _light setLightAttenuation [35,1,0,0.005];
     _sources pushBack _light;
