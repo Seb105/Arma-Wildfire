@@ -1,1 +1,2 @@
 hemtt build --release
+pause

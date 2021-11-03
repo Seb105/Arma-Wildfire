@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-#include "\a3\3DEN\UI\macros.inc"
 
 class CfgPatches {
     class ADDON {
@@ -16,6 +15,8 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+
+#include "CfgEventHandlers.hpp"
 
 class CfgSFX {
     class Fire;
@@ -57,7 +58,7 @@ class CfgVehicles {
         author = "Seb";
         scope = 2;
         scopeCurator = 2;
-        displayName = LSTRING(ModuleStartFireName);
+        displayName = CSTRING(ModuleStartFireName);
         category = "Wildfire_Category";
         function = QFUNC(moduleFire);
         isGlobal = 1;
@@ -65,20 +66,20 @@ class CfgVehicles {
         class ModuleDescription: ModuleDescription
         {
             position = 1;
-            description = LSTRING(ModuleStartFireDescription);
+            description = CSTRING(ModuleStartFireDescription);
         };
     };
 
     class Wildfire_ModuleEmergencyStop: Wildfire_ModuleStartFire {
-        displayName = LSTRING(ModuleEmergencyStopName)
+        displayName = CSTRING(ModuleEmergencyStopName);
         isTriggerActivated = 0;
-        function = QFUNC(emergencyStop)
-    }
+        function = QFUNC(emergencyStop);
+    };
 };
 
 class CfgFactionClasses {
     class NO_CATEGORY;
     class Wildfire_Category: NO_CATEGORY {
-        displayName = LSTRING(Wildfire)
+        displayName = CSTRING(Wildfire)
     };
 };

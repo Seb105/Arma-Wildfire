@@ -54,7 +54,7 @@ if (isServer) then {
     _sources pushBack _sound;
     GVAR(burningObjects) pushBackUnique _tree;
     private _endTime = time + GVAR(burnTime);  
-    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnTypes), GVAR(spreadDist)];
+    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDist)];
     [
         {_this call FUNC(fireLoopServer)}, 
         [_tree, _endTime, _nearbyObjects], 

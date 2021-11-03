@@ -18,8 +18,6 @@ if (count _nearbyObjects > 0 && {count GVAR(burningObjects) < GVAR(maxBurningObj
     } forEach _burn;
 };
 
-private _sleep = GVAR(spreadSleep)/2 + random GVAR(spreadSleep);
-
 for "_i" from 0 to _sleep step 1 do {
     [
         {
@@ -37,5 +35,5 @@ for "_i" from 0 to _sleep step 1 do {
 [
     {_this call FUNC(fireLoopServer)},
     [_tree, _endTime, _nearbyObjects], 
-    _sleep
+    random GVAR(spreadSleep)
 ] call CBA_fnc_waitAndExecute;

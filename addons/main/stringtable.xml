@@ -32,7 +32,7 @@
             <English>The maximum time an object can burn for</English>
         </Key>
         <Key ID="STR_wildfire_main_BurnBuildings">
-            <English>Fire spread distance</English>
+            <English>Burn buildings</English>
         </Key>
         <Key ID="STR_wildfire_main_MaxBurningObjects">
             <English>Maximum burning objects</English>

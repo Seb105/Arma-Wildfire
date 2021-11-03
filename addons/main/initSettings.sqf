@@ -1,8 +1,8 @@
 [
     QGVAR(spreadDistance),  // varName
     "SLIDER",               // type
-    [LLString(SpreadDistTitle), LLSTRING(SpreadDistTooltip)],        // title
-    LLString(Wildfire),  // Category
+    [LLSTRING(SpreadDistTitle), LLSTRING(SpreadDistTooltip)],        // title
+    LLSTRING(Wildfire),  // Category
     [15, 100, 35, 0],       // Values 
     true,                   // isGlobal?
     {  
@@ -14,9 +14,9 @@
 [
     QGVAR(spreadSpeed),  // varName
     "SLIDER",               // type
-    [LLString(SpreadSpeedTitle), LLSTRING(SpreadSpeedTooltip)],        // title
-    LLString(Wildfire),  // Category
-    [15, 100, 35, 0],       // Values 
+    [LLSTRING(SpreadSpeedTitle), LLSTRING(SpreadSpeedTooltip)],        // title
+    LLSTRING(Wildfire),  // Category
+    [1, 30, 1, 0],       // Values 
     true,                   // isGlobal?
     {  
         GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))/2
@@ -26,9 +26,9 @@
 
 [
     QGVAR(burnBuildings),  // varName
-    "SLIDER",               // type
-    LLString(BurnBuildings),        // title
-    LLString(Wildfire),  // Category
+    "CHECKBOX",               // type
+    LLSTRING(BurnBuildings),        // title
+    LLSTRING(Wildfire),  // Category
     false,                  // Values 
     true,                   // isGlobal?
     {  
@@ -44,9 +44,9 @@
 [
     QGVAR(maxBurningObjects),  // varName
     "SLIDER",               // type
-    LLString(MaxBurningObjects),        // title
-    LLString(Wildfire),  // Category
-    [0, 600, 3000, 0],       // Values 
+    LLSTRING(MaxBurningObjects),        // title
+    LLSTRING(Wildfire),  // Category
+    [0, 3000, 600, 0],       // Values 
     true,                   // isGlobal?
     nil,                      // Script executed
     false                   // Requires restart?
@@ -55,9 +55,9 @@
 [
     QGVAR(burnTime),  // varName
     "SLIDER",               // type
-    [LLString(BurnTimeTitle), LLSTRING(BurnTimeTooltip)],        // title
-    LLString(Wildfire),  // Category
-    [30, 90, 300, 0],       // Values 
+    [LLSTRING(BurnTimeTitle), LLSTRING(BurnTimeTooltip)],        // title
+    LLSTRING(Wildfire),  // Category
+    [30, 300, 90, 0],       // Values 
     true,                   // isGlobal?
     nil,                      // Script executed
     false                   // Requires restart?
