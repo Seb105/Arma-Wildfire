@@ -5,7 +5,7 @@ if (_unit == call CBA_fnc_currentUnit) then {
     "youreOnFire" cutText [
         format [
             "<t color='#ff0000' font='PuristaBold' size='2'>%1</t>",
-            "I'M BURNING!"
+            LLSTRING(ImBurning)
         ], 
         "PLAIN", 
         0.25, 

@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 params ["_tree"];
 
 _bbr = boundingBoxReal _tree;
@@ -21,9 +22,6 @@ private _light = if (_createLight) then {
     _sources pushBack _light;
     _light
 };
-
-private _sound = createSoundSource ["Sound_Fire", _tree, [], 0];
-_sources pushBack _sound;
 
 private _particleSize = _maxHeight max _maxLength max _maxWidth;
 private _fire = "#particleSource" createVehicleLocal _basePos;
@@ -51,15 +49,17 @@ _smoke setParticleRandom [2,[_maxWidth/3,_maxLength/3,0.15],[-0,0,0],0.5,0,[0,0,
 _smoke setDropInterval 2*0.9 + 2*(random 0.2);
 _sources pushBack _smoke;
 
-[_tree, _sources] call seb_fnc_removeFireLoop;
-
 if (isServer) then {
-    seb_burningObjects pushBackUnique _tree;
-    private _endTime = time + 60 + (random 60);  
-    private _nearbyObjects = (nearestTerrainObjects [_tree, seb_fireTypes, seb_spreadDist]);
+    private _sound = createSoundSource ["Wildfire_Sound_Wildfire", _tree, [], 0];
+    _sources pushBack _sound;
+    GVAR(burningObjects) pushBackUnique _tree;
+    private _endTime = time + GVAR(burnTime);  
+    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnTypes), GVAR(spreadDist)];
     [
-        {_this call seb_fnc_fireLoop}, 
+        {_this call FUNC(fireLoopServer)}, 
         [_tree, _endTime, _nearbyObjects], 
-        random (seb_fireSleep * 2)
+        random GVAR(spreadSleep)
     ] call CBA_fnc_waitAndExecute;
 };
+
+[_tree, _sources] call FUNC(fireLoopParticles);

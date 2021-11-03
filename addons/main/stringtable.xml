@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="wildfire">
     <Package name="Main">
-        <Key ID="STR_wildfire_main_example">
-            <English>!TURRET OVERRIDE!</English>
+        <Key ID="STR_wildfire_main_ModuleStartFireName">
+            <English>Start Fire</English>
+        </Key>
+        <Key ID="STR_wildfire_main_ModuleStartFireDescription">
+            <English>Start a fire at this location</English>
+        </Key>
+        <Key ID="STR_wildfire_main_ModuleEmergencyStopName">
+            <English>Extinguish All Wildfires</English>
+        </Key>
+        <Key ID="STR_wildfire_main_Wildfire">
+            <English>Wildfire</English>
+        </Key>
+        <Key ID="STR_wildfire_main_SpreadDistTitle">
+            <English>Fire spread distance</English>
+        </Key>
+        <Key ID="STR_wildfire_main_SpreadDistTooltip">
+            <English>Maximum distance (in metres) that the fire can spread</English>
+        </Key>
+        <Key ID="STR_wildfire_main_SpreadSpeedTitle">
+            <English>Fire spread speed</English>
+        </Key>
+        <Key ID="STR_wildfire_main_SpreadSpeedTooltip">
+            <English>Maximum speed (in metres per second) at which fire will spread</English>
+        </Key>
+        <Key ID="STR_wildfire_main_BurnTimeTitle">
+            <English>Maximum burn time</English>
+        </Key>
+        <Key ID="STR_wildfire_main_BurnTimeTooltip">
+            <English>The maximum time an object can burn for</English>
+        </Key>
+        <Key ID="STR_wildfire_main_BurnBuildings">
+            <English>Fire spread distance</English>
+        </Key>
+        <Key ID="STR_wildfire_main_MaxBurningObjects">
+            <English>Maximum burning objects</English>
+        </Key>
+        <Key ID="STR_wildfire_main_ImBurning">
+            <English>I'M BURNING!!</English>
         </Key>
     </Package>
 </Project>

@@ -9,16 +9,16 @@ if (time > _endTime) exitWith {
     };
 };
 
-_nearbyObjects = _nearbyObjects select {!(_x in seb_burningObjects || _x in seb_burnedObjects)};
-if (count _nearbyObjects > 0 && {count seb_burningObjects < seb_maxBurningObjects}) then {
+_nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
+if (count _nearbyObjects > 0 && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}) then {
     private _spreadChance = 1 / count _nearbyObjects;
-    private _burn = _nearbyObjects select {random 100 < (25 - rain * 20) * (1 - ((_x distance2D _tree) / seb_spreadDist))};
+    private _burn = _nearbyObjects select {random 100 < (25 - rain * 20) * (1 - ((_x distance2D _tree) / GVAR(spreadDist)))};
     {
-        [_x] remoteExecCall ["seb_fnc_fire"];
+        [_x] remoteExecCall [QGVAR(fire)];
     } forEach _burn;
 };
 
-private _sleep = seb_fireSleep/2 + random seb_fireSleep;
+private _sleep = GVAR(spreadSleep)/2 + random GVAR(spreadSleep);
 
 for "_i" from 0 to _sleep step 1 do {
     [
@@ -26,7 +26,7 @@ for "_i" from 0 to _sleep step 1 do {
             params ["_tree"];
             private _nearbyUnits = _tree nearEntities ["Man", 15];
             {
-                [_x] remoteExecCall ["seb_fnc_fireDamage", _x];
+                [_x] remoteExecCall [QFUNC(fireDamage), _x];
             } forEach _nearbyUnits;
         },
         _tree,
@@ -35,7 +35,7 @@ for "_i" from 0 to _sleep step 1 do {
 };
 
 [
-    {_this call seb_fnc_fireLoop},
+    {_this call FUNC(fireLoopServer)},
     [_tree, _endTime, _nearbyObjects], 
     _sleep
 ] call CBA_fnc_waitAndExecute;
