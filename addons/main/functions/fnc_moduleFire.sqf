@@ -4,7 +4,7 @@ if !(isServer) exitWith {};
 
 params ["_obj"];
 
-private _nearbyObjects = (nearestTerrainObjects [_obj, GVAR(burnTypes), GVAR(spreadDist)]) select {
+private _nearbyObjects = (nearestTerrainObjects [_obj, GVAR(burnTypes), GVAR(spreadDistance)]) select {
     _x call FUNC(canBurn);
 };
 {

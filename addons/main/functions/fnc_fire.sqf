@@ -16,7 +16,7 @@ private _light = if (_createLight) then {
     _light = "#lightpoint" createVehicleLocal _basePos;
     _light setLightColor [0,0,0];
     _light setLightAmbient [1,0.45,0.3];
-    _light setLightIntensity 300;
+    _light setLightIntensity 600;
     _light setLightUseFlare false;
     _light setLightAttenuation [35,1,0,0.005];
     _sources pushBack _light;
@@ -54,7 +54,7 @@ if (isServer) then {
     _sources pushBack _sound;
     GVAR(burningObjects) pushBackUnique _tree;
     private _endTime = time + GVAR(burnTime);  
-    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDist)];
+    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance)];
     [
         {_this call FUNC(fireLoopServer)}, 
         [_tree, _endTime, _nearbyObjects], 

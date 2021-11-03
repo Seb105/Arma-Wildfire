@@ -6,7 +6,7 @@
     [15, 100, 35, 0],       // Values 
     true,                   // isGlobal?
     {  
-        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))/2
+        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))
     },                      // Script executed
     false                   // Requires restart?
 ] call CBA_fnc_addSetting;
@@ -16,10 +16,10 @@
     "SLIDER",               // type
     [LLSTRING(SpreadSpeedTitle), LLSTRING(SpreadSpeedTooltip)],        // title
     LLSTRING(Wildfire),  // Category
-    [1, 30, 1, 0],       // Values 
+    [0.25, 30, 0.25, 2],       // Values 
     true,                   // isGlobal?
     {  
-        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))/2
+        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))
     },                      // Script executed
     false                   // Requires restart?
 ] call CBA_fnc_addSetting;
