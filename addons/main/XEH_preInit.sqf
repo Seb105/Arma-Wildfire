@@ -2,6 +2,13 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 
+private _ACEMedicalLoaded = !isNull (configFile >> "CfgPatches" >> "ace_medical");
+if (_ACEMedicalLoaded) then {
+    [QPATHTOF(functions\DOUBLES(fnc,fireDamageACE).sqf), QFUNC(fireDamage)] call CBA_fnc_compileFunction;
+} else {
+    [QPATHTOF(functions\DOUBLES(fnc,fireDamage).sqf), QFUNC(fireDamage)] call CBA_fnc_compileFunction;
+};
+
 #include "initSettings.sqf"
 
 if (isServer) then {

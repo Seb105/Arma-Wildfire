@@ -29,7 +29,7 @@ for "_i" from 0 to _sleep step 1 do {
     [
         {
             params ["_tree"];
-            private _nearbyUnits = _tree nearEntities ["Man", 15];
+            private _nearbyUnits = _tree nearEntities ["Man", 35]; // https://laist.com/news/how-to-survive-a-wildfire-tips
             {
                 [_x] remoteExecCall [QFUNC(fireDamage), _x];
             } forEach _nearbyUnits;
