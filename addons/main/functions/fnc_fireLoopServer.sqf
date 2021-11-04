@@ -1,12 +1,14 @@
 #include "script_component.hpp"
 
 params ["_tree", "_endTime", "_nearbyObjects"];
-if (time > _endTime) exitWith {
+if (time > _endTime || {GVAR(emergencyExtinguish)}) exitWith {
     if (typeOf _tree isEqualTo "") then {
         _tree hideObjectGlobal true;
     } else {
         _tree setDamage ((random 0.45) + 0.55);
     };
+    GVAR(burnedObjects) pushBack _tree;
+    GVAR(burningObjects) deleteAt (GVAR(burningObjects) find _tree);
 };
 
 _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
@@ -20,7 +22,7 @@ if (count _nearbyObjects > 0 && {count GVAR(burningObjects) < GVAR(maxBurningObj
     } forEach _burn;
 };
 
-private _sleep = random GVAR(spreadSleep); // Avg is actually spreadSleep/2
+private _sleep = random GVAR(spreadSleep);
 
 for "_i" from 0 to _sleep step 1 do {
     [

@@ -3,7 +3,9 @@
 class CfgPatches {
     class ADDON {
         name = QUOTE(COMPONENT);
-        units[] = {};
+        units[] = {
+            QGVAR(Module_StartFire), 
+            QGVAR(module_EmergencyStop)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
@@ -20,7 +22,7 @@ class CfgPatches {
 
 class CfgSFX {
     class Fire;
-    class Wildfire_Fire: Fire {
+    class GVAR(Fire): Fire {
         name = "Sound: Wildfire";
         sound0[] = {"A3\Sounds_F\sfx\fire1_loop",1.25,1,150,1,0,0,0};
     };
@@ -28,10 +30,10 @@ class CfgSFX {
 
 class CfgVehicles {
     class Sound_Fire;
-    class Wildfire_Sound_Wildfire: Sound_Fire {
+    class GVAR(Sound_Fire): Sound_Fire {
         author = "Seb";
         scope = 1;
-        sound = "wildfire_fire";
+        sound = QGVAR(Fire);
         displayName = "Wildfire";
     };
 
@@ -53,27 +55,29 @@ class CfgVehicles {
         };
     };
 
-    class Wildfire_ModuleStartFire: Module_F
+    class GVAR(Module_StartFire): Module_F
     {
         author = "Seb";
         scope = 2;
         scopeCurator = 2;
         displayName = CSTRING(ModuleStartFireName);
         category = "Wildfire_Category";
-        function = QFUNC(moduleFire);
-        isGlobal = 1;
+        function = QFUNC(moduleStartFire);
+        isGlobal = 0;
         isTriggerActivated = 1;
+        isDisposable = 1;
+        is3DEN = 0;
         class ModuleDescription: ModuleDescription
         {
             position = 1;
             description = CSTRING(ModuleStartFireDescription);
+            sync[] = {"EmptyDetector"};
         };
     };
 
-    class Wildfire_ModuleEmergencyStop: Wildfire_ModuleStartFire {
+    class GVAR(Module_EmergencyStop): GVAR(Module_StartFire) {
         displayName = CSTRING(ModuleEmergencyStopName);
-        isTriggerActivated = 0;
-        function = QFUNC(emergencyStop);
+        function = QFUNC(moduleEmergencyStop);
     };
 };
 

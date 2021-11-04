@@ -7,7 +7,7 @@ ADDON = false;
 if (isServer) then {
     GVAR(burningObjects) = [];
     GVAR(burnedObjects) =  [];
-    GVAR(emergencyExtinquish) = false;
+    GVAR(emergencyExtinguish) = false;
 };
 
 ADDON = true;

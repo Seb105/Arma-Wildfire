@@ -50,7 +50,7 @@ _smoke setDropInterval 2*0.9 + 2*(random 0.2);
 _sources pushBack _smoke;
 
 if (isServer) then {
-    private _sound = createSoundSource ["Wildfire_Sound_Wildfire", _tree, [], 0];
+    private _sound = createSoundSource [QGVAR(Sound_Fire), _tree, [], 0];
     _sources pushBack _sound;
     GVAR(burningObjects) pushBackUnique _tree;
     private _endTime = time + GVAR(burnTime);  

@@ -6,7 +6,7 @@
     [15, 100, 35, 0],       // Values 
     true,                   // isGlobal?
     {  
-        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))
+        GVAR(spreadSleep) = GVAR(spreadDistance)/GVAR(spreadSpeed)
     },                      // Script executed
     false                   // Requires restart?
 ] call CBA_fnc_addSetting;
@@ -19,7 +19,7 @@
     [0.25, 10, 0.25, 2],       // Values 
     true,                   // isGlobal?
     {  
-        GVAR(spreadSleep) = (GVAR(spreadDistance)/GVAR(spreadSpeed))
+        GVAR(spreadSleep) = GVAR(spreadDistance)/GVAR(spreadSpeed)
     },                      // Script executed
     false                   // Requires restart?
 ] call CBA_fnc_addSetting;
