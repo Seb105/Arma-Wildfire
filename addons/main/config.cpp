@@ -36,7 +36,7 @@ class CfgVehicles {
         sound = QGVAR(Fire);
         displayName = "Wildfire";
     };
-
+    class Logic;
     class Module_F: Logic {
         class AttributesBase
         {
