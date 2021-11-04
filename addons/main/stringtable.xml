@@ -25,6 +25,12 @@
         <Key ID="STR_wildfire_main_SpreadSpeedTooltip">
             <English>Base speed (in km/h) at which fire will spread. Can be 2x higher at max wind strength</English>
         </Key>
+        <Key ID="STR_wildfire_main_minDistanceToPlayerTitle">
+            <English>Spread near players distance (0=inf)</English>
+        </Key>
+        <Key ID="STR_wildfire_main_minDistanceToPlayerTooltip">
+            <English>Like Dynamic Simulation, fires will only spread when below this distance to a player unit. Good for performance. 0 = infinite</English>
+        </Key>
         <Key ID="STR_wildfire_main_BurnTimeTitle">
             <English>Maximum burn time</English>
         </Key>

@@ -63,3 +63,14 @@
     nil,                      // Script executed
     false                   // Requires restart?
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(minDistanceToPlayer),  // varName
+    "SLIDER",               // type
+    [LLSTRING(minDistanceToPlayerTitle), LLSTRING(minDistanceToPlayerTooltip)],        // title
+    LLSTRING(Wildfire),  // Category
+    [0, 5000, 500, 0],       // Values 
+    true,                   // isGlobal?
+    nil,                      // Script executed
+    false                   // Requires restart?
+] call CBA_fnc_addSetting;

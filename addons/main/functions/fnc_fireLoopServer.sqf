@@ -9,6 +9,10 @@ _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
 if (
     count _nearbyObjects > 0
     && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}   // Max burning objects
+    && { // Nearby player check
+        GVAR(minDistanceToPlayer) isEqualTo 0 
+        || {(allPlayers) findIf {_x distance2D _tree < GVAR(minDistanceToPlayer)} isNotEqualTo -1}
+    }  
 ) then {
     private _rainCoef = (1.1-rain) min 1;
     private _spreadDistWind = (1 + windStr) * GVAR(spreadDistance);
