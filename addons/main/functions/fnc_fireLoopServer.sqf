@@ -8,8 +8,10 @@ if (time > _endTime || {GVAR(emergencyExtinguish)}) exitWith {
 _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
 if (
     count _nearbyObjects > 0
-    && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}   // Max burning objects
-    && { // Nearby player check
+    && { // Max burning objects
+        count GVAR(burningObjects) < GVAR(maxBurningObjects)
+        || {GVAR(maxBurningObjects) isEqualTo 0}
+    } && { // Nearby player check
         GVAR(minDistanceToPlayer) isEqualTo 0 
         || {(allPlayers) findIf {_x distance2D _tree < GVAR(minDistanceToPlayer)} isNotEqualTo -1}
     }  

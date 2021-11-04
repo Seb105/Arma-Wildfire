@@ -41,7 +41,7 @@
             <English>Burn buildings</English>
         </Key>
         <Key ID="STR_wildfire_main_MaxBurningObjects">
-            <English>Maximum burning objects</English>
+            <English>Maximum burning objects (0=inf)</English>
         </Key>
         <Key ID="STR_wildfire_main_ImBurning">
             <English>I'M BURNING!!</English>

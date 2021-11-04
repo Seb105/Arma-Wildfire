@@ -14,4 +14,4 @@ if (_unit == call CBA_fnc_currentUnit) then {
     ];
 };
 _bodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
-[_unit, 0.1, _bodyPart, "stab", _unit, [], false] call ace_medical_fnc_addDamageToUnit;
+[_unit, 0.25, _bodyPart, "stab", _unit, [], false] call ace_medical_fnc_addDamageToUnit;

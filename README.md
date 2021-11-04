@@ -10,7 +10,7 @@ Fires can be started via module or script, and all fires can be extinguished in 
 The performance FPS wise is better than you'd expect, but less than perfect.
 
 ### FEATURES:
-- Spreadable wildifre
+- Spreadable wildfire
 - Compatible with any modded map
 - Eden/Zeus modules
 - Takes rain, wind direction and wind strength into account
@@ -21,7 +21,6 @@ The performance FPS wise is better than you'd expect, but less than perfect.
 - Emergency extinguish module
 - Multiplayer compatible
 - Serverside calculations
-
 
 
 ### HOW TO USE:
@@ -44,7 +43,7 @@ Emergency stop all fires (needs to be executed on server):
 
 `0 remoteExecCall ["wildfire_main_fnc_emergencyStop", 2]`
 
-## Please submit any issues, translations, or feature requests to this projects Github:
+## Please submit any contributions, bug reports, stringtable translations, or feature requests to this projects Github:
 
 https://github.com/Seb105/Arma-Wildfire
 
