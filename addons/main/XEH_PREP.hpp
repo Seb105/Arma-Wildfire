@@ -1,4 +1,5 @@
 PREP(canBurn);
+PREP(emergencyStop);
 PREP(getWindArea);
 PREP(fire);
 PREP(fireLoopParticles);
