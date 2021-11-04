@@ -2,19 +2,15 @@
 
 params ["_logic", "", "_activated"];
 
+if (!isServer || GVAR(emergencyExtinguish)) exitWith {};
 GVAR(emergencyExtinguish) = true;
-if !(isServer) exitWith {};
-[] spawn {
-    _todo = +GVAR(burningObjects);
-    {
 
-    } forEach _todo;
-}; // Doing all this in 1 frame is a bad idea
 [
     {
         count GVAR(burningObjects) == 0
     }, {
-        deleteVehicle _this;
+        params ["_logic"];
+        deleteVehicle _logic;
         GVAR(emergencyExtinguish) = false;
     },
     _logic

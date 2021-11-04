@@ -12,13 +12,14 @@
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(spreadSpeed),  // varName
+    QGVAR(spreadSpeedKmh),  // varName
     "SLIDER",               // type
     [LLSTRING(SpreadSpeedTitle), LLSTRING(SpreadSpeedTooltip)],        // title
     LLSTRING(Wildfire),  // Category
-    [0.25, 10, 0.25, 2],       // Values 
+    [0.25, 40, 1, 2],       // Values 
     true,                   // isGlobal?
     {  
+        GVAR(spreadSpeed) = GVAR(spreadSpeedKmh)/3.6; // km/h -> m/s
         GVAR(spreadSleep) = GVAR(spreadDistance)/GVAR(spreadSpeed)
     },                      // Script executed
     false                   // Requires restart?

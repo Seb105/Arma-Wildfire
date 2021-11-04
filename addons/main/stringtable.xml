@@ -23,7 +23,7 @@
             <English>Fire spread speed</English>
         </Key>
         <Key ID="STR_wildfire_main_SpreadSpeedTooltip">
-            <English>Base speed (in metres per second) at which fire will spread. Can be higher due to wind</English>
+            <English>Base speed (in km/h) at which fire will spread. Can be 2x higher at max wind strength</English>
         </Key>
         <Key ID="STR_wildfire_main_BurnTimeTitle">
             <English>Maximum burn time</English>

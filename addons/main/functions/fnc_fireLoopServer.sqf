@@ -2,17 +2,14 @@
 
 params ["_tree", "_endTime", "_nearbyObjects"];
 if (time > _endTime || {GVAR(emergencyExtinguish)}) exitWith {
-    if (typeOf _tree isEqualTo "") then {
-        _tree hideObjectGlobal true;
-    } else {
-        _tree setDamage ((random 0.45) + 0.55);
-    };
-    GVAR(burnedObjects) pushBack _tree;
-    GVAR(burningObjects) deleteAt (GVAR(burningObjects) find _tree);
+    _tree call FUNC(removeObject);
 };
 
 _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)};
-if (count _nearbyObjects > 0 && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}) then {
+if (
+    count _nearbyObjects > 0
+    && {count GVAR(burningObjects) < GVAR(maxBurningObjects)}   // Max burning objects
+) then {
     private _rainCoef = (1.1-rain) min 1;
     private _spreadDistWind = (1 + windStr) * GVAR(spreadDistance);
     private _area = [_tree, _spreadDistWind] call FUNC(getWindArea);

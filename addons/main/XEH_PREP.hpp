@@ -6,4 +6,5 @@ PREP(fireLoopParticles);
 PREP(fireLoopServer);
 PREP(moduleStartFire);
 PREP(moduleEmergencyStop);
+PREP(removeObject);
 PREP(shouldStartFire);
