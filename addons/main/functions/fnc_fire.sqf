@@ -55,9 +55,10 @@ if (isServer) then {
     GVAR(burningObjects) pushBackUnique _tree;
     private _endTime = time + GVAR(burnTime);  
     private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance)];
+    private _damageDistance = (_maxLength max _maxWidth) + 35; // https://laist.com/news/how-to-survive-a-wildfire-tips
     [
         {_this call FUNC(fireLoopServer)}, 
-        [_tree, _endTime, _nearbyObjects], 
+        [_tree, _endTime, _nearbyObjects, _damageDistance], 
         random GVAR(spreadSleep)
     ] call CBA_fnc_waitAndExecute;
 };

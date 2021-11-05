@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-params ["_tree", "_endTime", "_nearbyObjects"];
+params ["_tree", "_endTime", "_nearbyObjects", "_damageDistance"];
 if (time > _endTime || {GVAR(emergencyExtinguish)}) exitWith {
     _tree call FUNC(removeObject);
 };
@@ -30,19 +30,19 @@ private _sleep = random GVAR(spreadSleep);
 for "_i" from 0 to _sleep step 1 do {
     [
         {
-            params ["_tree"];
-            private _nearbyUnits = _tree nearEntities ["Man", 35]; // https://laist.com/news/how-to-survive-a-wildfire-tips
+            params ["_tree", "_damageDistance"];
+            private _nearbyUnits = _tree nearEntities ["Man", _damageDistance]; 
             {
                 [_x] remoteExecCall [QFUNC(fireDamage), _x];
             } forEach _nearbyUnits;
         },
-        _tree,
+        [_tree, _damageDistance],
         _i
     ] call CBA_fnc_waitAndExecute;
 };
 
 [
     {_this call FUNC(fireLoopServer)},
-    [_tree, _endTime, _nearbyObjects], 
+    [_tree, _endTime, _nearbyObjects, _damageDistance], 
     _sleep
 ] call CBA_fnc_waitAndExecute;
