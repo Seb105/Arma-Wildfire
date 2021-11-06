@@ -52,14 +52,14 @@
 			<Chinese>和動態模擬一樣，火焰只有在低於這個距離的情況下才會向玩家單位蔓延。使得FPS更優。 0 = 無限</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_BurnTimeTitle">
-            <English>Maximum burn time</English>
-            <Chinesesimp>最大燃烧时间</Chinesesimp>
-			<Chinese>最大燃燒時間</Chinese>
+            <English>Minimum burn time</English>
+            <Chinesesimp>最短燃烧时间</Chinesesimp>
+			<Chinese>最短燃燒時間</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_BurnTimeTooltip">
-            <English>The maximum time an object can burn for</English>
-            <Chinesesimp>一个物体能够燃烧的最长时间</Chinesesimp>
-			<Chinese>一個物體能夠燃燒的最長時間</Chinese>
+            <English>The minimum time an object will burn for</English>
+            <Chinesesimp>一个物体能够燃烧的最短时间</Chinesesimp>
+			<Chinese>一個物體能夠燃燒的最短時間</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_BurnBuildings">
             <English>Burn buildings</English>
