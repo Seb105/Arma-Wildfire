@@ -23,7 +23,7 @@ private _light = if (_createLight) then {
     _light
 };
 
-private _particleSize = _maxHeight max _maxLength max _maxWidth;
+private _particleSize = _maxLength max _maxWidth;
 private _fire = "#particleSource" createVehicleLocal _basePos;
 _fire setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,10,32,1],"","Billboard",3,8,[0,0,_maxHeight/3],[0,0,0.5],0,1.27,1,0,[_particleSize/2,_particleSize/2],[[1,1,1,-100],[1,1,1,-100],[0,0,0,0]],[1],0,0,"","","",0,false,0,[[0,0,0,0]]];
 _fire setParticleRandom [
