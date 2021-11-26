@@ -22,7 +22,7 @@ if (isServer) then {
             !isNil QGVAR(spreadSleep)
         },
         {
-            call FUNC(fireLoopServer);
+            call FUNC(managerLoop);
         }
     ] call CBA_fnc_waitUntilAndExecute;
 };

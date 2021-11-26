@@ -61,13 +61,21 @@ if (isServer) then {
     publicVariable QGVAR(burningObjects);
     private _endTime = time + GVAR(burnTime);  
     private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance)];
-    GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects, _damageDistance]];
-};
+    GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects]];
 
-[
-    {
-        _this call FUNC(fireLoopParticles)
-    },
-    [_tree, _particles],
-    10 // Allow time for this object to appear in burningObjects array
-] call CBA_fnc_waitAndExecute;
+    [
+        {
+            _this call FUNC(fireLoopServer)
+        },
+        [_tree, _particles, _damageDistance],
+        10 // Allow time for this object to appear in burningObjects array
+    ] call CBA_fnc_waitAndExecute;
+} else {
+    [
+        {
+            _this call FUNC(fireLoopClient)
+        },
+        [_tree, _particles],
+        10 // Allow time for this object to appear in burningObjects array
+    ] call CBA_fnc_waitAndExecute;
+};

@@ -5,4 +5,7 @@ if !(_tree in GVAR(burningObjects)) exitWith {
     {deleteVehicle _x} forEach _particles;
 };
 
-[{_this call FUNC(fireLoopParticles)}, _this, 5] call CBA_fnc_waitAndExecute;
+
+
+
+[{_this call FUNC(fireLoopClient)}, _this, 5] call CBA_fnc_waitAndExecute;
