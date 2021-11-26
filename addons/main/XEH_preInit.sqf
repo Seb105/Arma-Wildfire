@@ -13,8 +13,11 @@ if (_ACEMedicalLoaded) then {
 
 if (isServer) then {
     GVAR(burningObjects) = [];
+    publicVariable QGVAR(burningObjects);
     GVAR(burnedObjects) =  [];
     GVAR(emergencyExtinguish) = false;
+    GVAR(treeHash) = createHashMap;
+    call FUNC(fireLoopServer);
 };
 
 ADDON = true;

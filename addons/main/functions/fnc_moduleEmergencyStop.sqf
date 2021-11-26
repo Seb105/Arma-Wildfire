@@ -2,16 +2,16 @@
 
 params ["_logic", "", "_activated"];
 
-if (!isServer || GVAR(emergencyExtinguish)) exitWith {};
+if (!isServer || GVAR(emergencyExtinguish)) exitWith {deleteVehicle _logic};
 GVAR(emergencyExtinguish) = true;
-
+GVAR(burningObjects) = [];
+publicVariable QGVAR(burningObjects);
 [
     {
-        count GVAR(burningObjects) == 0
-    }, {
         params ["_logic"];
         deleteVehicle _logic;
         GVAR(emergencyExtinguish) = false;
     },
-    _logic
-] call CBA_fnc_waitUntilAndExecute;
+    nil,
+    GVAR(spreadSleep)*1.1
+] call CBA_fnc_waitAndExecute;
