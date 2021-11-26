@@ -1,10 +1,13 @@
 PREP(canBurn);
 PREP(emergencyStop);
+PREP(extinguishObject);
 PREP(getWindArea);
 PREP(fire);
-PREP(fireLoopParticles);
+PREP(fireLoopClient);
 PREP(fireLoopServer);
+PREP(managerLoop);
 PREP(moduleStartFire);
 PREP(moduleEmergencyStop);
+PREP(moduleExtinguishArea);
 PREP(removeObject);
 PREP(shouldStartFire);

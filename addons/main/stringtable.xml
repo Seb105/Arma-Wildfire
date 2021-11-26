@@ -11,6 +11,12 @@
             <Chinesesimp>在此地点点火</Chinesesimp>
             <Chinese>在此地點點火</Chinese>
         </Key>
+        <Key ID="STR_wildfire_main_ModuleExtinguishAreaName">
+            <English>Extinguish Area</English>
+        </Key>
+        <Key ID="STR_wildfire_main_ModuleExtinguishAreaDescription">
+            <English>Extinguish all fires near this area</English>
+        </Key>
         <Key ID="STR_wildfire_main_ModuleEmergencyStopName">
             <English>Extinguish All Wildfires</English>
             <Chinesesimp>扑灭所有野火</Chinesesimp>

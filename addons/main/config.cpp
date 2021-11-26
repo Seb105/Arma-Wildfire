@@ -5,7 +5,9 @@ class CfgPatches {
         name = QUOTE(COMPONENT);
         units[] = {
             QGVAR(Module_StartFire), 
-            QGVAR(module_EmergencyStop)};
+            QGVAR(Module_EmergencyStop),
+            QGVAR(Module_ExtinguishArea)
+        };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
@@ -24,7 +26,7 @@ class CfgSFX {
     class Fire;
     class GVAR(Fire): Fire {
         name = "Sound: Wildfire";
-        sound0[] = {"A3\Sounds_F\sfx\fire1_loop",1.25,1,150,1,0,0,0};
+        sound0[] = {"A3\Sounds_F\sfx\fire1_loop",1.25,1,200,1,0,0,0};
     };
 };
 
@@ -78,6 +80,11 @@ class CfgVehicles {
     class GVAR(Module_EmergencyStop): GVAR(Module_StartFire) {
         displayName = CSTRING(ModuleEmergencyStopName);
         function = QFUNC(moduleEmergencyStop);
+    };
+
+    class GVAR(Module_ExtinguishArea): GVAR(Module_StartFire) {
+        displayName = CSTRING(ModuleExtinguishAreaName);
+        function = QFUNC(moduleExtinguishArea);
     };
 };
 

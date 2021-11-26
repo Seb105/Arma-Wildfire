@@ -13,8 +13,18 @@ if (_ACEMedicalLoaded) then {
 
 if (isServer) then {
     GVAR(burningObjects) = [];
+    publicVariable QGVAR(burningObjects);
     GVAR(burnedObjects) =  [];
     GVAR(emergencyExtinguish) = false;
+    GVAR(treeHash) = createHashMap;
+    [
+        {
+            !isNil QGVAR(spreadSleep)
+        },
+        {
+            call FUNC(managerLoop);
+        }
+    ] call CBA_fnc_waitUntilAndExecute;
 };
 
 ADDON = true;
