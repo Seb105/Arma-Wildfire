@@ -17,7 +17,14 @@ if (isServer) then {
     GVAR(burnedObjects) =  [];
     GVAR(emergencyExtinguish) = false;
     GVAR(treeHash) = createHashMap;
-    call FUNC(fireLoopServer);
+    [
+        {
+            !isNil QGVAR(spreadSleep)
+        },
+        {
+            call FUNC(fireLoopServer);
+        }
+    ] call CBA_fnc_waitUntilAndExecute;
 };
 
 ADDON = true;

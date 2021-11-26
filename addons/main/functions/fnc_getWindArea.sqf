@@ -9,4 +9,4 @@ private _return = [_offset, _width, _length, windDir, false];
 // DEBUG_CENTRE = getPosWorld _object;
 // DEBUG_ELLIPSE = [_pos, _width, _length, windDir, [1, 0, 0, 1]];
 
-[_offset, _width, _length, windDir, false]
+_return

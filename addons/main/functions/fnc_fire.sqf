@@ -4,7 +4,7 @@ params [
     "_tree", 
     ["_source", objNull] // Should only be used to spread fire from burning object to object, not start fires.
 ];
-if (!isNull _source && {!_source in GVAR(burningObjects)}) exitWith {}; // Tree has gone out since spreading fire.
+if (!isNull _source && {!(_source in GVAR(burningObjects))}) exitWith {}; // Tree has gone out since spreading fire.
 
 _bbr = boundingBoxReal _tree;
 _p1 = _bbr select 0;
@@ -60,8 +60,8 @@ if (isServer) then {
     private _damageDistance = (_maxLength max _maxWidth) + 35; // https://laist.com/news/how-to-survive-a-wildfire-tips
     publicVariable QGVAR(burningObjects);
     private _endTime = time + GVAR(burnTime);  
-    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance), _damageDistance];
-    GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects]];
+    private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance)];
+    GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects, _damageDistance]];
 };
 
 [
@@ -69,5 +69,5 @@ if (isServer) then {
         _this call FUNC(fireLoopParticles)
     },
     [_tree, _particles],
-    10, // Allow time for this object to appear in burningObjects array
+    10 // Allow time for this object to appear in burningObjects array
 ] call CBA_fnc_waitAndExecute;
