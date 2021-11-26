@@ -12,7 +12,7 @@ The performance FPS wise is better than you'd expect, but less than perfect.
 ### FEATURES:
 - Spreadable wildfire
 - Compatible with any modded map
-- Eden/Zeus modules
+- Eden/Zeus modules for starting and ending fires
 - Takes rain, wind direction and wind strength into account
 - Damages AI and players
 - ACE Medical Compatible (no compats needed)
@@ -26,7 +26,7 @@ The performance FPS wise is better than you'd expect, but less than perfect.
 ### HOW TO USE:
 
 You can  use the provided modules, accessible via both 3DEN and Zeus.
-The module can be activated via synced trigger.
+The modules can be activated via synced trigger.
 
 Fires can also be started via script (see examples).
 
@@ -43,6 +43,9 @@ Emergency stop all fires (needs to be executed on server):
 
 `0 remoteExecCall ["wildfire_main_fnc_emergencyStop", 2]`
 
+Extinguish an individual object (needs to be executed on server):
+
+`_tree remoteExecCall ["wildfire_main_fnc_extinguishObject", 2]`
 ## Please submit any contributions, bug reports, stringtable translations, or feature requests to this projects Github:
 
 https://github.com/Seb105/Arma-Wildfire
