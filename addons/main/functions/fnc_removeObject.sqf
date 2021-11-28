@@ -15,6 +15,7 @@ if (typeOf _tree isEqualTo "") then {
                 private _newTree = createSimpleObject [_newTreeType, [0,0,0]];
                 private _scale = (((0 boundingBoxReal _tree)#2)/((0 boundingBoxReal _newTree)#2));
                 if (_newTreeType isEqualTo "a3\vegetation_f_enoch\tree\d_betula_pendula_stem.p3d") then {
+                    _treePos = _treePos vectorAdd [0, 0, ((random 7) - 3.5) * _scale];
                     _y = random 360; 
                     _p = 0; 
                     _r = -90;
@@ -23,21 +24,26 @@ if (typeOf _tree isEqualTo "") then {
                         [[sin _r, -sin _p, cos _r * cos _p], -_y] call BIS_fnc_rotateVector2D
                     ];
                     _newTree setObjectScale _scale;
-                    _newTree setPosASL (_treePos vectorAdd [0, 0, ((random 7) - 3.5) * _scale]);
+                    _newTree setPosASL _treePos;
+                    _newTree setObjectScale _scale;
                 } else {
                     _scale = _scale/3;
+                    _treePos = _treePos vectorAdd [0, 0, -((random 2.5) * _scale)];
                     _newTree setDir (random 360);
                     _newTree setObjectScale _scale;
-                    _newTree setPosASL (_treePos vectorAdd [0, 0, -((random 2.5) * _scale)]);
+                    _newTree setPosASL _treePos;
+                    _newTree setObjectScale _scale;
                 };
             };
             case "b": { // bush
-                private _newBush = createSimpleObject ["\a3\plants_f\Bush\b_ficusC2d_F.p3d", [0,0,0]];
-                private _scale = (((0 boundingBoxReal _tree)#2)/((0 boundingBoxReal _newBush)#2));
+                private _newBush = createSimpleObject ["a3\plants_f\Bush\b_ficusC2d_F.p3d", [0,0,0]];
+                _scale = (((0 boundingBoxReal _tree)#2)/((0 boundingBoxReal _newBush)#2));
                 _newBush setDir (random 360);
                 _newBush setObjectScale _scale;
                 _newBush setPosASL _treePos;
+                _newBush setObjectScale _scale;
             };
+            default {};
         };
     };
 } else {
