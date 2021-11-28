@@ -15,7 +15,7 @@ if (typeOf _tree isEqualTo "") then {
                 private _newTree = createSimpleObject [_newTreeType, [0,0,0]];
                 private _scale = (((0 boundingBoxReal _tree)#2)/((0 boundingBoxReal _newTree)#2));
                 if (_newTreeType isEqualTo "a3\vegetation_f_enoch\tree\d_betula_pendula_stem.p3d") then {
-                    _treePos = _treePos vectorAdd [0, 0, ((random 7) - 3.5) * _scale];
+                    _treePos = _treePos vectorAdd [0, 0, ((random 7) - 3.5) * _scale * 0.75];
                     _y = random 360; 
                     _p = 0; 
                     _r = -90;
