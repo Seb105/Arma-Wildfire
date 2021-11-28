@@ -3,7 +3,11 @@
 
 private _sleep = random GVAR(spreadSleep);
 
-if (GVAR(maxBurningObjects) isEqualTo 0 || {count GVAR(burningObjects) < GVAR(maxBurningObjects)}) then {
+if (
+    count GVAR(burningObjects) > 0 && 
+    {GVAR(maxBurningObjects) isEqualTo 0
+    || {count GVAR(burningObjects) < GVAR(maxBurningObjects)}}
+) then {
     private _trees = +GVAR(burningObjects); // don't modify array whilst iterating over it.
     private _rainCoef = (1.1-rain) min 1;
     private _spreadDistWind = (1 + windStr) * GVAR(spreadDistance);
