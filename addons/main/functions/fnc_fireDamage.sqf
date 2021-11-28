@@ -12,6 +12,8 @@ if (_unit == call CBA_fnc_currentUnit) then {
         true, 
         true
     ];
+} else {
+    _unit call FUNC(unitAvoidFire);
 };
 if (isDamageAllowed _unit) then {
     _unit setDamage (damage _unit + 0.05);
