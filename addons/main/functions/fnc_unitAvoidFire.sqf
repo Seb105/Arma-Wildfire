@@ -10,4 +10,5 @@ private _unitPos = getPos _unit;
 private _sourcePos = getPos _source;
 // Line directly away from the source of fire.
 private _fleePos = ((_sourcePos vectorFromTo _unitPos) vectorMultiply SEARCH_DISTANCE) vectorAdd _unitPos;
+_fleePos set [2, 0];
 _grp doMove _fleePos;

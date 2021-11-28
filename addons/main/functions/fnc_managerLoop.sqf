@@ -3,9 +3,19 @@
 
 private _sleep = random GVAR(spreadSleep);
 
+{
+    private _tree = _x;
+    private _treeDetails = GVAR(treeHash) get (hashValue _tree);
+    _treeDetails params ["_endTime", "_nearbyObjects"];
+    if (time > _endTime) then {
+        [_tree, false] call FUNC(removeObject);
+        continue;
+    };
+} forEach GVAR(burningObjects);
+
 if (
-    count GVAR(burningObjects) > 0 && 
-    {GVAR(maxBurningObjects) isEqualTo 0
+    count GVAR(burningObjects) > 0 
+    && {GVAR(maxBurningObjects) isEqualTo 0
     || {count GVAR(burningObjects) < GVAR(maxBurningObjects)}}
 ) then {
     private _trees = +GVAR(burningObjects); // don't modify array whilst iterating over it.
@@ -25,10 +35,6 @@ if (
         _windArea set [0, _windAreaBasePos vectorAdd getPosWorld _tree];
         private _treeDetails = GVAR(treeHash) get (hashValue _tree);
         _treeDetails params ["_endTime", "_nearbyObjects"];
-        if (time > _endTime) then {
-            [_tree, false] call FUNC(removeObject);
-            continue;
-        };
         _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)}; // Removes objects that could never be burned, and saves result
         GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects]];
         private _burn = (_nearbyObjects inAreaArray _windArea) select {[_tree, _x, _rainCoef, _spreadDistWind] call FUNC(shouldStartFire)}; // Selects a sample of burnable objects
