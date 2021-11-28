@@ -43,6 +43,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(placeBurnedTrees),  // varName
+    "CHECKBOX",               // type
+    LLSTRING(PlaceBurnedTrees),        // title
+    LLSTRING(Wildfire),  // Category
+    true,                  // Values 
+    true,                   // isGlobal?
+    {},                      // Script executed
+    false                   // Requires restart?
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(maxBurningObjects),  // varName
     "SLIDER",               // type
     LLSTRING(MaxBurningObjects),        // title

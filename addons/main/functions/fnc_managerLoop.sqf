@@ -1,20 +1,47 @@
 #include "script_component.hpp"
 
-
 private _sleep = random GVAR(spreadSleep);
+private _objectsAreBurning = count GVAR(burningObjects) > 0;
+if (_objectsAreBurning) then {
+    {
+        private _tree = _x;
+        private _treeDetails = GVAR(treeHash) get (hashValue _tree);
+        _treeDetails params ["_endTime", "_nearbyObjects", "_damageDistance"];
+        if (time > _endTime) then {
+            [_tree, false] call FUNC(removeObject);
+            continue;
+        };
+    } forEach GVAR(burningObjects);
 
-{
-    private _tree = _x;
-    private _treeDetails = GVAR(treeHash) get (hashValue _tree);
-    _treeDetails params ["_endTime", "_nearbyObjects"];
-    if (time > _endTime) then {
-        [_tree, false] call FUNC(removeObject);
-        continue;
+    for "_i" from 0 to _sleep do {
+        [
+            {
+                private _onFireUnits = [];
+                {
+                    private _tree = _x;
+                    private _treeDetails = GVAR(treeHash) get (hashValue _tree);
+                    _treeDetails params ["_endTime", "_nearbyObjects", "_damageDistance"];
+                    private _nearbyUnits = _tree nearEntities ["Man", _damageDistance];
+                    private _nearbyLeaders = _nearbyUnits apply {leader _x};
+                    _onFireUnits append _nearbyUnits;
+                    _nearbyLeaders = _nearbyLeaders arrayIntersect _nearbyLeaders;
+                    {
+                        [_x, _tree] remoteExecCall [QFUNC(unitAvoidFire)];
+                    } forEach _nearbyLeaders;
+                } forEach GVAR(burningObjects);
+                _onFireUnits = _onFireUnits arrayIntersect _onFireUnits;
+                {
+                    [_x] remoteExecCall [QFUNC(fireDamage), _x];
+                } forEach _onFireUnits;
+            }, 
+            nil, 
+            _i
+        ] call CBA_fnc_waitAndExecute;
     };
-} forEach GVAR(burningObjects);
+};
 
 if (
-    count GVAR(burningObjects) > 0 
+    _objectsAreBurning
     && {GVAR(maxBurningObjects) isEqualTo 0
     || {count GVAR(burningObjects) < GVAR(maxBurningObjects)}}
 ) then {
@@ -34,9 +61,9 @@ if (
         private _windArea = +_windAreaBase;
         _windArea set [0, _windAreaBasePos vectorAdd getPosWorld _tree];
         private _treeDetails = GVAR(treeHash) get (hashValue _tree);
-        _treeDetails params ["_endTime", "_nearbyObjects"];
+        _treeDetails params ["_endTime", "_nearbyObjects", "_damageDistance"];
         _nearbyObjects = _nearbyObjects select {_x call FUNC(canBurn)}; // Removes objects that could never be burned, and saves result
-        GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects]];
+        GVAR(treeHash) set [hashValue _tree, [_endTime, _nearbyObjects, _damageDistance]];
         private _burn = (_nearbyObjects inAreaArray _windArea) select {[_tree, _x, _rainCoef, _spreadDistWind] call FUNC(shouldStartFire)}; // Selects a sample of burnable objects
         {
             private _toBurn = _x;

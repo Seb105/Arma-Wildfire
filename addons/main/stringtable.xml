@@ -72,6 +72,9 @@
             <Chinesesimp>烧毁建筑物</Chinesesimp>
             <Chinese>燒毀建築物</Chinese>
         </Key>
+        <Key ID="STR_wildfire_main_PlaceBurnedTrees">
+            <English>Place burned treestumps</English>
+        </Key>
         <Key ID="STR_wildfire_main_MaxBurningObjects">
             <English>Maximum burning objects (0=inf)</English>
             <Chinesesimp>最大燃烧物体数（0=无限）</Chinesesimp>
