@@ -70,7 +70,6 @@ if (
             [
                 {
                     params ["_toBurn", "_spreadSource"];
-                    if (_toBurn in GVAR(burningObjects)) exitWith {}; // Could have already caught fire from wait.
                     [_toBurn, _spreadSource] remoteExecCall [QFUNC(fire)];
                 },
                 [_toBurn, _tree],
