@@ -15,7 +15,6 @@ if (isServer) then {
     GVAR(burningObjects) = [];
     publicVariable QGVAR(burningObjects);
     GVAR(burnedObjects) =  [];
-    GVAR(emergencyExtinguish) = false;
     GVAR(treeHash) = createHashMap;
     [
         {
