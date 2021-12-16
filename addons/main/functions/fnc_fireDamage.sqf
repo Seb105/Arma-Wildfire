@@ -2,7 +2,7 @@
 
 params ["_unit"];
 if (_unit == call CBA_fnc_currentUnit) then {
-    "youreOnFire" cutText [
+    QGVAR(onFire) cutText [
         format [
             "<t color='#ff0000' font='PuristaBold' size='2'>%1</t>",
             LLSTRING(ImBurning)
