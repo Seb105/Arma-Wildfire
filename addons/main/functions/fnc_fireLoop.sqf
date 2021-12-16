@@ -12,7 +12,7 @@ if (hasInterface && {(call CBA_fnc_currentUnit) distance _tree < _warningDistanc
             LLSTRING(ImNearFire)
         ], 
         "PLAIN", 
-        0.25,
+        0.5,
         true, 
         true
     ];
