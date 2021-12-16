@@ -16,10 +16,14 @@
         <Key ID="STR_wildfire_main_ModuleExtinguishAreaName">
             <English>Extinguish Area</English>
             <German>Lösche Gebiet</German>
+            <Chinesesimp>扑灭</Chinesesimp>
+            <Chinese>撲滅</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_ModuleExtinguishAreaDescription">
             <English>Extinguish all fires near this area</English>
             <German>Lösche alle Feuer nahe diesem Gebiet</German>
+            <Chinesesimp>扑灭该区域附近的所有火灾</Chinesesimp>
+            <Chinese>撲滅該區域附近的所有火災</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_ModuleEmergencyStopName">
             <English>Extinguish All Wildfires</English>
@@ -90,6 +94,8 @@
         <Key ID="STR_wildfire_main_PlaceBurnedTrees">
             <English>Place burned treestumps</English>
             <German>Plaziere verbrannten Baumstumpf</German>
+            <Chinesesimp>放置烧毁的树桩</Chinesesimp>
+            <Chinese>放置燒毀的樹樁</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_MaxBurningObjects">
             <English>Maximum burning objects (0=inf)</English>
