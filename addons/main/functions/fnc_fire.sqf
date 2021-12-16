@@ -53,11 +53,11 @@ _smoke setParticleRandom [2,[_maxWidth/3,_maxLength/3,0.15],[-0,0,0],0.5,0,[0,0,
 _smoke setDropInterval 2*0.9 + 2*(random 0.2);
 _particles pushBack _smoke;
 
+private _damageDistance = (_maxLength max _maxWidth) + 35; // https://laist.com/news/how-to-survive-a-wildfire-tips
 if (isServer) then {
     private _sound = createSoundSource [QGVAR(Sound_Fire), _tree, [], 0];
     _particles pushBack _sound;
     GVAR(burningObjects) pushBackUnique _tree;
-    private _damageDistance = (_maxLength max _maxWidth) + 35; // https://laist.com/news/how-to-survive-a-wildfire-tips
     publicVariable QGVAR(burningObjects);
     private _endTime = time + GVAR(burnTime);  
     private _nearbyObjects = nearestTerrainObjects [_tree, GVAR(burnableTypes), GVAR(spreadDistance)];
@@ -67,5 +67,5 @@ if (isServer) then {
 [
     {
         _this call FUNC(fireLoop)
-    },[_tree, _particles], 10 // Allow time for this object to appear in burningObjects array
+    },[_tree, _particles, _damageDistance * 1.25], 10 // Allow time for this object to appear in burningObjects array
 ] call CBA_fnc_waitAndExecute;

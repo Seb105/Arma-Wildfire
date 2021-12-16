@@ -109,5 +109,8 @@
             <Chinese>我著火了! ！ ！</Chinese>
             <German>ICH BRENNE!!</German>
         </Key>
+        <Key ID="STR_wildfire_main_ImNearFire">
+            <English>That fire is getting close</English>
+        </Key>
     </Package>
 </Project>

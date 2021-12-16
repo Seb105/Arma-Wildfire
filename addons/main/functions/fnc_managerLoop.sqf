@@ -78,6 +78,8 @@ if (
         } forEach _burn;
     } forEach _trees;
     publicVariable QGVAR(burningObjects);
+} else {
+    _sleep = 5; // If no objects are burning, check more frequently so there is not a big delay at start of fires.
 };
 
 [
