@@ -5,7 +5,7 @@ if (_unit == call CBA_fnc_currentUnit) then {
     QGVAR(onfire) cuttext [
         format [
             "<t color='#ff0000' font='PuristaBold' size='2'>%1</t>",
-            LLstrinG(ImBurning)
+            LLSTRING(ImBurning)
         ],
         "PLAIN",
         0.25,

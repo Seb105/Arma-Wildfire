@@ -115,7 +115,7 @@
             <Chinese>洶洶火焰正在逼近 ！！</Chinese>
         </Key>
         <Key ID="STR_wildfire_main_DamageDistanceTitle">
-            <English>Damage distance</English>
+            <English>Unit damage distance</English>
         </Key>
     </Package>
 </Project>

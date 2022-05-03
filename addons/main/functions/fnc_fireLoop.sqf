@@ -14,9 +14,9 @@ if (hasinterface && {
     QGVAR(nearfire) cuttext [
         format [
             "<t color='#ffa500' font='PuristaBold' size='2'>%1</t>",
-            LLstrinG(ImNearfire)
+            LLSTRING(ImNearfire)
         ],
-        "PLAin",
+        "PLAIN",
         0.5,
         true,
         true

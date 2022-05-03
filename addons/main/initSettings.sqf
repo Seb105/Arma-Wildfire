@@ -30,7 +30,7 @@
     "SLIDER",               // type
     LLSTRING(DamageDistanceTitle),        // title
     LLSTRING(Wildfire),  // Category
-    [5, 60, 20, 0],       // Values 
+    [5, 60, 20, 1],       // Values 
     true,                   // isGlobal?
     {},                      // Script executed
     false                   // Requires restart?
