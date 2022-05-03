@@ -105,12 +105,14 @@
         </Key>
         <Key ID="STR_wildfire_main_ImBurning">
             <English>I'M BURNING!!</English>
-            <Chinesesimp>我着火了! ！！</Chinesesimp>
-            <Chinese>我著火了! ！ ！</Chinese>
+            <Chinesesimp>我着火了！ ！！</Chinesesimp>
+            <Chinese>我著火了！ ！ ！</Chinese>
             <German>ICH BRENNE!!</German>
         </Key>
         <Key ID="STR_wildfire_main_ImNearFire">
             <English>That fire is getting close</English>
+            <Chinesesimp>汹汹火焰正在逼近 ！！</Chinesesimp>
+            <Chinese>洶洶火焰正在逼近 ！！</Chinese>
         </Key>
     </Package>
 </Project>
