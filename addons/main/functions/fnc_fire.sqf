@@ -56,7 +56,7 @@ _smoke setParticleRandom [2, [_maxWidth/3, _maxLength/3, 0.15], [-0, 0, 0], 0.5,
 _smoke setDropInterval 2*0.9 + 2*(random 0.2);
 _particles pushBack _smoke;
 
-private _damagedistance = (_maxLength max _maxWidth) + GVAR(damageDistance);
+private _damageDistance = (_maxLength max _maxWidth) + GVAR(damageDistance);
 // https://laist.com/news/how-to-survive-a-wildfire-tips
 if (isServer) then {
     private _sound = createSoundSource [QGVAR(Sound_fire), _tree, [], 0];
