@@ -2,11 +2,13 @@
 
 params ["_logic", "_units", "_activated"];
 
-if !(isServer && _activated) exitWith {};
+if !(isServer && _activated) exitwith {};
 
-private _nearbyFires = GVAR(burningObjects) select {_x distance2D _logic < 25};
+private _nearbyfires = GVAR(burningObjects) select {
+    _x distance2D _logic < 25
+};
 {
     [_x, false] call FUNC(extinguishObject);
-} forEach _nearbyFires;
+} forEach _nearbyfires;
 publicVariable QGVAR(burningObjects);
-deleteVehicle _logic;
+deletevehicle _logic;

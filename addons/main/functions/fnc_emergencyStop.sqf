@@ -1,5 +1,5 @@
 #include "script_component.hpp"
 
-if (!isServer) exitWith {};
+if (!isServer) exitwith {};
 GVAR(burningObjects) = [];
 publicVariable QGVAR(burningObjects);

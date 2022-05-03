@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 
 params ["_logic", "_units", "_activated"];
-if !(isServer && _activated) exitWith {};
+if !(isServer && _activated) exitwith {};
 
 // burnable types might be undefined at mission start.
-private _types = missionNameSpace getVariable [
-    QGVAR(burnableTypes),
+private _types = missionnamespace getVariable [
+    QGVAR(burnabletypes),
     if (GVAR(burnBuildings)) then {
-        ["TREE", "SMALL TREE", "BUSH", "BUILDING", "HOUSE", "CHURCH", "CHAPEL", "FUELSTATION"]
+        ["TREE", "SMALL TREE", "BUSH", "BUILDinG", "HOUSE", "CHURCH", "CHAPEL", "fuelSTATION"]
     } else {
         ["TREE", "SMALL TREE", "BUSH"]
     }
@@ -20,7 +20,7 @@ private _nearbyObjects = (nearestTerrainObjects [_logic, _types, 15]) select {
 {
     [{
         [_this] remoteExec [QFUNC(fire)]
-    }, _x, random 2] call CBA_fnc_waitAndExecute;
+    }, _x, random 2] call CBA_fnc_waitandexecute;
 } forEach _nearbyObjects;
 
-deleteVehicle _logic;
+deletevehicle _logic;
