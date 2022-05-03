@@ -1,2 +1,2 @@
-hemtt build --release
+hemtt.exe build --release
 pause
