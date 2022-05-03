@@ -26,6 +26,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(damageDistance),  // varName
+    "SLIDER",               // type
+    LLSTRING(DamageDistanceTitle),        // title
+    LLSTRING(Wildfire),  // Category
+    [5, 60, 20, 0],       // Values 
+    true,                   // isGlobal?
+    {},                      // Script executed
+    false                   // Requires restart?
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(burnBuildings),  // varName
     "CHECKBOX",               // type
     LLSTRING(BurnBuildings),        // title

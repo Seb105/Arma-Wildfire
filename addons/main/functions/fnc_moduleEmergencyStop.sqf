@@ -2,13 +2,13 @@
 
 params ["_logic", "", "_activated"];
 
-if !(isServer && _activated) exitWith {};
-0 call FUNC(emergencyStop);
+if !(isServer && _activated) exitwith {};
+0 call FUNC(emergencystop);
 [
     {
         params ["_logic"];
-        deleteVehicle _logic;
+        deletevehicle _logic;
     },
     _logic,
     10
-] call CBA_fnc_waitAndExecute;
+] call CBA_fnc_waitandexecute;
